@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proposal index{% endblock %}
+
+{% block body %}
+    <h1>Proposal index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proposal in proposals %}
+            <tr>
+                <td>{{ proposal.id }}</td>
+                <td>{{ proposal.type }}</td>
+                <td>{{ proposal.name }}</td>
+                <td>{{ proposal.description }}</td>
+                <td>
+                    <a href="{{ path('proposal_show', {'id': proposal.id}) }}">show</a>
+                    <a href="{{ path('proposal_edit', {'id': proposal.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('proposal_new') }}">Create new</a>
+{% endblock %}
