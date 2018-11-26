@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+    db:
+        image: postgres:9.6-alpine
+        environment:
+            - POSTGRES_DB=insider-symfony
+            - POSTGRES_USER=insider-user
+            - POSTGRES_PASSWORD=insider-password
+        ports:
+            - "5432:5432"
+
+volumes:
+    db-data: {}
