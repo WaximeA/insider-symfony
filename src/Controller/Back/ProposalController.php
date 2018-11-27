@@ -79,7 +79,7 @@ class ProposalController extends AbstractController
      */
     public function delete(Request $request, Proposal $proposal): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$proposal->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $proposal->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($proposal);
             $em->flush();
