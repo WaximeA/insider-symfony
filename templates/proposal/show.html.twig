@@ -23,6 +23,22 @@
                 <th>Description</th>
                 <td>{{ proposal.description }}</td>
             </tr>
+            <tr>
+                <th>Created by</th>
+                <td>{{ proposal.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Created at</th>
+                <td>{{ proposal.createdAt | date('d/m/Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated by</th>
+                <td>{{ proposal.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>Updated at</th>
+                <td>{{ proposal.updatedAt | date('d/m/Y H:i:s')  }}</td>
+            </tr>
         </tbody>
     </table>
 
