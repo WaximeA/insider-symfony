@@ -47,7 +47,7 @@ class ProposalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="proposal_show", methods="GET")
+     * @Route("/{slug}", name="proposal_show", methods="GET")
      */
     public function show(Proposal $proposal): Response
     {
@@ -55,7 +55,7 @@ class ProposalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="proposal_edit", methods="GET|POST")
+     * @Route("/{slug}/edit", name="proposal_edit", methods="GET|POST")
      */
     public function edit(Request $request, Proposal $proposal): Response
     {

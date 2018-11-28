@@ -23,8 +23,8 @@
                 <td>{{ proposal.name }}</td>
                 <td>{{ proposal.description }}</td>
                 <td>
-                    <a href="{{ path('proposal_show', {'id': proposal.id}) }}">show</a>
-                    <a href="{{ path('proposal_edit', {'id': proposal.id}) }}">edit</a>
+                    <a href="{{ path('proposal_show', {'slug': proposal.slug}) }}">show</a>
+                    <a href="{{ path('proposal_edit', {'slug': proposal.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
