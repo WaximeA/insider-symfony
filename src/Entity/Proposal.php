@@ -2,15 +2,23 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\PublishedTrait;
+use App\Entity\Traits\SoftDeletedTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Traits\TimestampableTrait;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProposalRepository")
  */
 class Proposal
 {
+    use PublishedTrait;
+    use SoftDeletedTrait;
+    use TimestampableTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -42,6 +50,13 @@ class Proposal
      * @ORM\OneToOne(targetEntity="App\Entity\Notation", mappedBy="proposal", cascade={"persist", "remove"})
      */
     private $notation;
+
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $slug = null;
 
     public function __construct()
     {
@@ -134,6 +149,25 @@ class Proposal
             $notation->setProposal($this);
         }
 
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+    /**
+     * @param string $slug
+     *
+     * @return Proposal
+     */
+    public function setSlug(string $slug):? self
+    {
+        $this->slug = $slug;
         return $this;
     }
 }

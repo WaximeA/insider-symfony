@@ -23,12 +23,32 @@
                 <th>Description</th>
                 <td>{{ proposal.description }}</td>
             </tr>
+            <tr>
+                <th>Created by</th>
+                <td>{{ proposal.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Created at</th>
+                <td>{{ proposal.createdAt | date('d/m/Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated by</th>
+                <td>{{ proposal.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>Updated at</th>
+                <td>{{ proposal.updatedAt | date('d/m/Y H:i:s')  }}</td>
+            </tr>
+            <tr>
+                <th>Published</th>
+                <td>{{ proposal.published  }}</td>
+            </tr>
         </tbody>
     </table>
 
     <a href="{{ path('proposal_index') }}">back to list</a>
 
-    <a href="{{ path('proposal_edit', {'id': proposal.id}) }}">edit</a>
+    <a href="{{ path('proposal_edit', {'slug': proposal.slug}) }}">edit</a>
 
     {{ include('proposal/_delete_form.html.twig') }}
 {% endblock %}

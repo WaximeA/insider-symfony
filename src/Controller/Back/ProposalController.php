@@ -20,7 +20,16 @@ class ProposalController extends AbstractController
      */
     public function index(ProposalRepository $proposalRepository): Response
     {
-        return $this->render('proposal/index.html.twig', ['proposals' => $proposalRepository->findAll()]);
+        $proposals = $proposalRepository->findBy([
+            'deleted' => false
+        ]);
+
+        return $this->render(
+            'proposal/index.html.twig',
+            [
+                "proposals"     => $proposals,
+            ]
+        );
     }
 
     /**
@@ -47,7 +56,7 @@ class ProposalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="proposal_show", methods="GET")
+     * @Route("/{slug}", name="proposal_show", methods="GET")
      */
     public function show(Proposal $proposal): Response
     {
@@ -55,7 +64,7 @@ class ProposalController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="proposal_edit", methods="GET|POST")
+     * @Route("/{slug}/edit", name="proposal_edit", methods="GET|POST")
      */
     public function edit(Request $request, Proposal $proposal): Response
     {
@@ -81,7 +90,7 @@ class ProposalController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$proposal->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($proposal);
+            $proposal->setDeleted(1);
             $em->flush();
         }
 

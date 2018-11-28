@@ -12,6 +12,11 @@
                 <th>Type</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Created by</th>
+                <th>Updated by</th>
+                <th>Published</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,9 +27,14 @@
                 <td>{{ proposal.type }}</td>
                 <td>{{ proposal.name }}</td>
                 <td>{{ proposal.description }}</td>
+                <td>{{ proposal.createdBy }}</td>
+                <td>{{ proposal.createdAt | date('d/m/Y H:i:s') }}</td>
+                <td>{{ proposal.updatedBy }}</td>
+                <td>{{ proposal.updatedAt | date('d/m/Y H:i:s') }}</td>
+                <td>{{ proposal.published }}</td>
                 <td>
-                    <a href="{{ path('proposal_show', {'id': proposal.id}) }}">show</a>
-                    <a href="{{ path('proposal_edit', {'id': proposal.id}) }}">edit</a>
+                    <a href="{{ path('proposal_show', {'slug': proposal.slug}) }}">show</a>
+                    <a href="{{ path('proposal_edit', {'slug': proposal.slug}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
