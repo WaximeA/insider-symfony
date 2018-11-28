@@ -15,21 +15,23 @@ use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 class UserType extends AbstractType
 {
 
-    private $roles;
-
-    public function __construct(RolesHelper $roles)
-    {
-        $this->roles = $roles;
-    }
+//    private $roles;
+//
+//    public function __construct(RolesHelper $roles)
+//    {
+//        $this->roles = $roles;
+//    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $rolesList = $this->roles->getRoles();
+//        $rolesHierarchy = $this->roles->getRoles();
+//        $rolesList = array_flip($rolesHierarchy);
+
         $builder
             ->add('email', EmailType::class)
-            ->add('roles', ChoiceType::class, array(
-                'choices'  => $rolesList
-            ))
+//            ->add('roles', ChoiceType::class, array(
+//                'choices'  => $rolesList
+//            ))
             ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
