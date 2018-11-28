@@ -16,6 +16,7 @@
                 <th>Updated at</th>
                 <th>Created by</th>
                 <th>Updated by</th>
+                <th>Published</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                 <td>{{ proposal.createdAt | date('d/m/Y H:i:s') }}</td>
                 <td>{{ proposal.updatedBy }}</td>
                 <td>{{ proposal.updatedAt | date('d/m/Y H:i:s') }}</td>
+                <td>{{ proposal.published }}</td>
                 <td>
                     <a href="{{ path('proposal_show', {'slug': proposal.slug}) }}">show</a>
                     <a href="{{ path('proposal_edit', {'slug': proposal.slug}) }}">edit</a>

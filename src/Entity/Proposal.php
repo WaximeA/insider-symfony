@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\PublishedTrait;
+use App\Entity\Traits\SoftDeletedTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,6 +15,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Proposal
 {
+    use PublishedTrait;
+    use SoftDeletedTrait;
     use TimestampableTrait;
 
     /**

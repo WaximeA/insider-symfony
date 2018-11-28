@@ -15,6 +15,7 @@ class ProposalType extends AbstractType
             ->add('type')
             ->add('name')
             ->add('description')
+            ->add('published')
             ->add('notation')
         ;
     }
