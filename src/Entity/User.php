@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\SoftDeletedTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\Timestampable;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -14,6 +16,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User implements UserInterface
 {
+    use SoftDeletedTrait;
+    use Timestampable;
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

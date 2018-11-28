@@ -19,6 +19,26 @@
                 <th>Parent_id</th>
                 <td>{{ commentary.parentId }}</td>
             </tr>
+            <tr>
+                <th>Created by</th>
+                <td>{{ commentary.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Created at</th>
+                <td>{{ commentary.createdAt | date('d/m/Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated by</th>
+                <td>{{ commentary.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>Updated at</th>
+                <td>{{ commentary.updatedAt | date('d/m/Y H:i:s')  }}</td>
+            </tr>
+            <tr>
+                <th>Published</th>
+                <td>{{ commentary.published  }}</td>
+            </tr>
         </tbody>
     </table>
 

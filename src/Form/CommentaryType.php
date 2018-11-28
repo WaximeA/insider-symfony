@@ -15,6 +15,7 @@ class CommentaryType extends AbstractType
             ->add('content')
             ->add('parent_id')
             ->add('proposal')
+            ->add('published')
         ;
     }
 
