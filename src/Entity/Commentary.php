@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+use App\Entity\Traits\PublishedTrait;
+use App\Entity\Traits\SoftDeletedTrait;
+use App\Entity\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Commentary
 {
+    use PublishedTrait;
+    use SoftDeletedTrait;
+    use TimestampableTrait;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

@@ -20,7 +20,16 @@ class CommentaryController extends AbstractController
      */
     public function index(CommentaryRepository $commentaryRepository): Response
     {
-        return $this->render('commentary/index.html.twig', ['commentaries' => $commentaryRepository->findAll()]);
+        $commentaries = $commentaryRepository->findBy([
+            'deleted' => false
+        ]);
+
+        return $this->render(
+            'commentary/index.html.twig',
+            [
+                "commentaries"     => $commentaries,
+            ]
+        );
     }
 
     /**
@@ -81,7 +90,7 @@ class CommentaryController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$commentary->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($commentary);
+            $commentary->setDeleted(1);
             $em->flush();
         }
 

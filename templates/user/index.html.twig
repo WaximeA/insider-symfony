@@ -12,6 +12,8 @@
                 <th>Email</th>
                 {#<th>Roles</th>#}
                 <th>Password</th>
+                <th>Created at</th>
+                <th>Updated at</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +24,8 @@
                 <td>{{ user.email }}</td>
                 {#<td>{{ user.roles }}</td>#}
                 <td>{{ user.password }}</td>
+                <td>{{ user.createdAt | date('d/m/Y H:i:s') }}</td>
+                <td>{{ user.updatedAt | date('d/m/Y H:i:s') }}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>

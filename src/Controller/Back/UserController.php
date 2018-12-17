@@ -20,9 +20,16 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
+        $users = $userRepository->findBy([
+            'deleted' => false
+        ]);
 
-//        dump( $this->getParameter('security.role_hierarchy.roles')); todo
-        return $this->render('user/index.html.twig', ['users' => $userRepository->findAll()]);
+        return $this->render(
+            'user/index.html.twig',
+            [
+                "users"     => $users,
+            ]
+        );
     }
 
     /**
@@ -83,7 +90,7 @@ class UserController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
-            $em->remove($user);
+            $user->setDeleted(1);
             $em->flush();
         }
 
