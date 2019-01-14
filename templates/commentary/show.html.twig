@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commentary{% endblock %}
+
+{% block body %}
+    <h1>Commentary</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commentary.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ commentary.content }}</td>
+            </tr>
+            <tr>
+                <th>Parent_id</th>
+                <td>{{ commentary.parentId }}</td>
+            </tr>
+            <tr>
+                <th>Created by</th>
+                <td>{{ commentary.createdBy }}</td>
+            </tr>
+            <tr>
+                <th>Created at</th>
+                <td>{{ commentary.createdAt | date('d/m/Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated by</th>
+                <td>{{ commentary.updatedBy }}</td>
+            </tr>
+            <tr>
+                <th>Updated at</th>
+                <td>{{ commentary.updatedAt | date('d/m/Y H:i:s')  }}</td>
+            </tr>
+            <tr>
+                <th>Published</th>
+                <td>{{ commentary.published  }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commentary_index') }}">back to list</a>
+
+    <a href="{{ path('commentary_edit', {'id': commentary.id}) }}">edit</a>
+
+    {{ include('commentary/_delete_form.html.twig') }}
+{% endblock %}
